@@ -1,0 +1,15 @@
+#include <iostream>
+#include <cstring>
+#include "items.h"
+#include <vector>
+using namespace std;
+
+class Room {
+ protected:
+  char* roomText;
+  vector<item*> roomItems;
+ public:
+  Room(char* t, item* roomItems);
+  ~Room();
+  item* getItems() const;
+};
