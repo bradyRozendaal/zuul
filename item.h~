@@ -1,0 +1,14 @@
+#include <iostream>
+
+using namespace std;
+
+class item {
+ protected:
+  char* name;
+  char* text;
+  int id;
+ public:
+  item(char* n, char* t, int id);
+  ~item();
+  void print() const;
+}
