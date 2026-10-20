@@ -5,7 +5,9 @@
 #include <vector>
 using namespace std;
 
-room::room(char* t, vector<item*> rI){
+room::room(char* t, char* n, vector<item*> rI){
+  name = new char[strlen(n)+1];
+  strcpy(name, n);
   roomText = new char[strlen(t)+1];
   strcpy(roomText, t);
 
@@ -13,6 +15,7 @@ room::room(char* t, vector<item*> rI){
 }
 
 room::~room(){
+  Delete name[];
   Delete roomText[];
   Delete roomItems[];
 }
@@ -22,7 +25,9 @@ vector<item*> room::getItems()
 }
 void room::print() const
 {
-  cout << roomText << "\n\nThere are the below items in this room: ";
+    cout << "You are in the: " << name << "\n"
+	 << roomText << "\n\n" 
+	 << "There are the below items in this room: ";
   for (item* i : roomItems)
     {
       i->print();
