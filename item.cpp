@@ -13,6 +13,18 @@ item::~item()
   Delete name[];
   Delete text[];
 }
+char* getName() const
+{
+  return name;
+}
+char* getText() const
+{
+  return text;
+}
+int getID() const
+{
+  return id;
+}
 void item::print const
 {
   cout << text;
