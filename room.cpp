@@ -15,15 +15,30 @@ room::room(char* t, char* n, vector<item*> rI){
 }
 
 room::~room(){
-  Delete name[];
-  Delete roomText[];
-  Delete roomItems[];
+  delete name[];
+  delete roomText[];
+  delete roomItems[];
+}
+void room::removeItem(item* i)
+{
+  char* itemName = i->getName();
+  for (item* it : roomItems)
+    {
+      if (it->getName() == itemName)
+	{
+	  roomItems.erase(it);
+	}
+    }
+}
+void room::addItem(item* i)
+{
+  roomItems.push_back(i);
 }
 vector<item*> room::getItems()
 {
   return roomItems;
 }
-void room::print() const
+void room::print()
 {
     cout << "You are in the: " << name << "\n"
 	 << roomText << "\n\n" 

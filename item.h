@@ -1,3 +1,5 @@
+#ifndef ITEM
+#define ITEM
 #include <iostream>
 
 using namespace std;
@@ -10,8 +12,10 @@ class item {
  public:
   item(char* n, char* t, int i);
   ~item();
-  char* getName() const;
-  char* getText() const;
-  int getID() const;
-  void print() const;
-}
+  char* getName();
+  char* getText();
+  int getID();
+  void print();
+};
+  
+#endif

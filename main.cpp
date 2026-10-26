@@ -18,7 +18,7 @@ void initRooms(vector<room*>& rooms)//initializes all rooms
 {
   char roomText[][15] = {"", ""};
   vector<vector<item*>> roomItems(5);
-  for (int i = 0, i < size(roomText); i++)
+  for (int i = 0; i < size(roomText); i++)
     {
       rooms.push_back(new room(roomText[i], roomItems[i]));
     }
@@ -26,16 +26,16 @@ void initRooms(vector<room*>& rooms)//initializes all rooms
 void getValidMoves(int** layout, int pos[2])
 {
   if (layout[pos[0]+1][pos[1]] != 0){
-    cout << "east\n"
+    cout << "east\n";
   }
   if (layout[pos[0]-1][pos[1]] != 0){
-    cout << "west\n"
+    cout << "west\n";
   }
   if (layout[pos[0]][pos[1]+1] != 0){
-    cout << "north\n"
+    cout << "north\n";
   }
   if (layout[pos[0]][pos[1]-1] != 0){
-    cout << "south\n"
+    cout << "south\n";
   }
 }
 
@@ -45,7 +45,7 @@ bool moveIsValid(int** layout, int targetPos[2])
     {
       return false;
     } 
-  if (layout[targetPos[0]][targetPos[1] != 0]
+  if (layout[targetPos[0]][targetPos[1] != 0])
     {
       return true;
     }
@@ -54,12 +54,19 @@ bool moveIsValid(int** layout, int targetPos[2])
   
 void printState(vector<room*> rooms, int** layout, int pos[2])
 {
-  cout << rooms[layout[pos[0]][pos[1]]]->print();//prints the text for the current room you are in
+  rooms[layout[pos[0]][pos[1]]]->print();//prints the text for the current room you are in
   cout << "\nYou can travel in the following directions: ";
   getValidMoves(layout, pos);
 }
+void printItems(vector<item*> items)
+  {
+    for (item* i : items)
+      {
+	i->print();
+      }
+  }
 
-void move(int &pos[2], int** layout)
+void move(int (&pos)[2], int** layout)
 {
   int targetPos[2];
   cout << "What direction would you like to move?";
@@ -96,7 +103,7 @@ int Main()
 {
   vector<item*> items;//items in your inventory
   vector<room*> rooms;//the vector of rooms
-  initRooms();
+  //initRooms();
   int size = 10;//total size of the map
   int** layout = new int*[size]{};//double pointer of layout
   for (int i = 0; i < size; i++){//iterates through layout to initialize the memory with 0s
@@ -107,8 +114,12 @@ int Main()
   bool play = true;
   while (play)
     {
-      printState(rooms, layout, pos);
-      //print inventory
+      printState(rooms, layout, pos);//prints the current game state
+      cout << "You have: ";
+      printItems(items);//prints your inventory
+      room* currentRoom = rooms[layout[pos[0]][pos[1]]];//room you are in
+      int currentRoomNum = layout[pos[0]][pos[1]];//int ID for the room you are in
+      vector<item*> rI = currentRoom->getItems();//items in the room you are in
       char in[5];
       cout << "What would you like to do? (move, pickup, use, drop, quit)\n";
       cin.getline(in, 5);
@@ -119,31 +130,47 @@ int Main()
       else if (in[0] == 'p')
 	{
 	  cout << "What item would you like to pickup?: \n";
-	  vector<item*> rI = rooms[layout[pos[0]][pos[1]]]->getItems();
-	  for (item* i : rI)
-	    {
-	      i->print();
-	    }
+	  printItems(rI);
 	  char* in;
 	  cin.getline(in);
 	  for (item* i : rI)
 	    {
 	      if (i->getName() == in)
 		{
-		  //add item to inventory and remove from room
+		  items.push_back(i);
+		  currentRoom->removeItem(i);
 		}
 	    }
 	}
-      else if (in[0] == 'u')
+      else if (in[0] == 'd')
 	{
-	  vector<item*> rI = rooms[layout[pos[0]][pos[1]]]->getItems();
+	  cout << "What item would you like to drop?: \n";
+	  printItems(items);
 	  char* in;
-	  cin.getline(in);
-	  for (item* i : rI)
+	  cin.getline(in, 20);
+	  for (item* i : items)
 	    {
 	      if (i->getName() == in)
 		{
-		  //determine if item is useable in room
+		  currentRoom->addItem(i);
+		  erase(items, i);
+		}
+	    }
+	}
+      else if (in[0] == 'u')//use an item
+	{
+	  cout << "Which item would you like to use?";
+	  printItems(items);
+	  char* in;
+	  cin.getline(in, 20);
+	  for (item* i : items)
+	    {
+	      if (i->getName() == in)
+		{
+		  if (i->getID() == currentRoomNum)
+		    {
+		      //repeated if list for what its going to do
+		    }
 		}
 	    }
 	  }

@@ -2,7 +2,7 @@
 #include "item.h"
 using namespace std;
 
-item::item(char* n, char* t, int id);
+item::item(char* n, char* t, int i)
 {
   name = n;
   text = t;
@@ -10,22 +10,22 @@ item::item(char* n, char* t, int id);
 }
 item::~item()
 {
-  Delete name[];
-  Delete text[];
+  delete name[];
+  delete text[];
 }
-char* getName() const
+char* item::getName()
 {
   return name;
 }
-char* getText() const
+char* item::getText()
 {
   return text;
 }
-int getID() const
+int item::getID()
 {
   return id;
 }
-void item::print const
+void item::print
 {
   cout << text;
 }
