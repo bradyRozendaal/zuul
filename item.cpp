@@ -10,22 +10,22 @@ item::item(char* n, char* t, int i)
 }
 item::~item()
 {
-  delete name[];
-  delete text[];
+  delete[] name;
+  delete[] text;
 }
-char* item::getName()
+char* item::getName() const
 {
   return name;
 }
-char* item::getText()
+char* item::getText() const
 {
   return text;
 }
-int item::getID()
+int item::getID() const
 {
   return id;
 }
-void item::print
+void item::print() const
 {
   cout << text;
 }

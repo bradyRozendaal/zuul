@@ -95,7 +95,8 @@ void move(int (&pos)[2], int** layout)
     }
   if (moveIsValid(layout, targetPos))
     {
-      pos = targetPos;
+      pos[0] = targetPos[0];
+      pos[1] = targetPos[1];
     }
 }
 
@@ -132,7 +133,7 @@ int Main()
 	  cout << "What item would you like to pickup?: \n";
 	  printItems(rI);
 	  char* in;
-	  cin.getline(in);
+	  cin.getline(in, 5);
 	  for (item* i : rI)
 	    {
 	      if (i->getName() == in)
@@ -153,7 +154,7 @@ int Main()
 	      if (i->getName() == in)
 		{
 		  currentRoom->addItem(i);
-		  erase(items, i);
+		  items.erase(remove(items.begin(),items.end(), i), items.end());
 		}
 	    }
 	}

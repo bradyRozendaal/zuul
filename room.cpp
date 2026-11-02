@@ -6,18 +6,21 @@
 using namespace std;
 
 room::room(char* t, char* n, vector<item*> rI){
-  name = new char[strlen(n)+1];
+  char* name = new char[strlen(n)+1];
   strcpy(name, n);
-  roomText = new char[strlen(t)+1];
+  char* roomText = new char[strlen(t)+1];
   strcpy(roomText, t);
 
-  roomItems = rI;
+  vector<item*> roomItems = rI;
 }
 
 room::~room(){
-  delete name[];
-  delete roomText[];
-  delete roomItems[];
+  delete[] name;
+  delete[] roomText;
+  for (item* i : roomItems)
+    {
+      delete i;
+    }
 }
 void room::removeItem(item* i)
 {

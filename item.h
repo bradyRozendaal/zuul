@@ -12,10 +12,10 @@ class item {
  public:
   item(char* n, char* t, int i);
   ~item();
-  char* getName();
-  char* getText();
-  int getID();
-  void print();
+  char* getName() const;
+  char* getText() const;
+  int getID() const;
+  void print() const;
 };
   
 #endif
