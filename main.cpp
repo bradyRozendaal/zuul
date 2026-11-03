@@ -12,10 +12,6 @@ using namespace std;
   Project: Zuul
   Made by: Brady Rozendaal
   Date: 11/2/26
-  Theme: Abandoned Research Facility
-
-  The player must explore 15 rooms, collect five items,
-  restore power, activate the facility's systems, and escape.
 */
 
 // Initializes all 15 rooms and places the five items.
