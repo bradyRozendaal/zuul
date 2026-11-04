@@ -1,16 +1,9 @@
-Open the readme file it doesnt format right on the homepage for some reason
-
 Map:
-+----------------+----------------+----------------+----------------+----------------+
-|  2             |  5             |  8             |  11            |  14            |
-| Security Office| Cafeteria      | Containment    | Generator Room | Emergency Exit |
-+----------------+----------------+----------------+----------------+----------------+
-|  1             |  4             |  7             |  10            |  13            |
-| Reception      | Storage Room   | Research Lab   | Maintenance    | Elevator       |
-+----------------+----------------+----------------+----------------+----------------+
-|  0             |  3             |  6             |  9             |  12            |
-| Entrance Lobby | Medical Bay    | Server Room    | Offices        | Reactor Control|
-+----------------+----------------+----------------+----------------+----------------+
+| | | Grid Map | | |
+| :--- | :--- | :--- | :--- | :--- |
+| **2**<br>Security Office | **5**<br>Cafeteria | **8**<br>Containment | **11**<br>Generator Room | **14**<br>Emergency Exit |
+| **1**<br>Reception | **4**<br>Storage Room | **7**<br>Research Lab | **10**<br>Maintenance | **13**<br>Elevator |
+| **0**<br>Entrance Lobby | **3**<br>Medical Bay | **6**<br>Server Room | **9**<br>Offices | **12**<br>Reactor Control |
 
 HOW TO COMPLETE THE GAME
 
